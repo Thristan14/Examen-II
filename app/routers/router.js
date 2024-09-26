@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Books = require('../controllers/books.controllers.js');
 const Usuario = require('../controllers/usuario.controllers.js');
+const Proyecto = require('../controllers/proyecto.controllers.js');
 
 // Rutas para el controlador de books
 router.post('/api/books/create', Books.create);
@@ -18,5 +19,11 @@ router.get('/api/usuarios/onebyid/:id', Usuario.findById);
 router.put('/api/usuarios/update/:id', Usuario.update);
 router.delete('/api/usuarios/delete/:id', Usuario.delete);
 
+// Rutas para el controlador de proyecto
+router.post('/api/proyectos/create', Proyecto.create);
+router.get('/api/proyectos/all', Proyecto.findAll);
+router.get('/api/proyectos/onebyid/:id', Proyecto.findById);
+router.put('/api/proyectos/update/:id', Proyecto.update);
+router.delete('/api/proyectos/delete/:id', Proyecto.delete);
 
 module.exports = router;
