@@ -11,14 +11,14 @@ exports.create = (req, res) => {
         usuario.contrasena = req.body.contrasena;
 
         Usuario.create(usuario).then(result => {
-            res.status(200).json({
-                message: "Uploaded successfully a user with id = " + result.id_usuario,
+            res.status(201).json({
+                message: "Usuario creado exitosamente con id = " + result.id_usuario,
                 usuario: result,
             });
         });
     } catch (error) {
         res.status(500).json({
-            message: "Fail!",
+            message: "Error al crear el usuario.",
             error: error.message
         });
     }
@@ -29,13 +29,13 @@ exports.findAll = (req, res) => {
     Usuario.findAll()
         .then(usuarios => {
             res.status(200).json({
-                message: "Get all users' Infos Successfully!",
+                message: "Información de todos los usuarios recuperada exitosamente.",
                 usuarios: usuarios
             });
         })
         .catch(error => {
             res.status(500).json({
-                message: "Error!",
+                message: "Error al recuperar usuarios.",
                 error: error
             });
         });
@@ -46,13 +46,13 @@ exports.findById = (req, res) => {
     Usuario.findByPk(req.params.id)
         .then(usuario => {
             res.status(200).json({
-                message: "Successfully retrieved a user with id = " + req.params.id,
+                message: "Usuario recuperado exitosamente con id = " + req.params.id,
                 usuario: usuario
             });
         })
         .catch(error => {
             res.status(500).json({
-                message: "Error!",
+                message: "Error al recuperar el usuario.",
                 error: error
             });
         });
@@ -64,12 +64,12 @@ exports.update = (req, res) => {
     Usuario.update(req.body, { where: { id_usuario: id } })
         .then(() => {
             res.status(200).json({
-                message: "Updated successfully a user with id = " + id
+                message: "Usuario actualizado exitosamente con id = " + id
             });
         })
         .catch(error => {
             res.status(500).json({
-                message: "Error -> Cannot update a user with id = " + id,
+                message: "Error -> No se puede actualizar el usuario con id = " + id,
                 error: error.message
             });
         });
@@ -81,13 +81,14 @@ exports.delete = (req, res) => {
     Usuario.destroy({ where: { id_usuario: id } })
         .then(() => {
             res.status(200).json({
-                message: "Deleted successfully a user with id = " + id
+                message: "Usuario eliminado exitosamente con id = " + id
             });
         })
         .catch(error => {
             res.status(500).json({
-                message: "Error -> Cannot delete a user with id = " + id,
+                message: "Error -> No se puede eliminar el usuario con id = " + id,
                 error: error.message
             });
         });
 }
+
