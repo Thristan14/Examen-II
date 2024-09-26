@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
-        primaryKey: truea
+        primaryKey: true
       },
       bookcode: {
         type: Sequelize.INTEGER
