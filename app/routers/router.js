@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Books = require('../controllers/books.controllers.js');
-const Books = require('../controllers/usuario.controllers.js');
+const Usuario = require('../controllers/usuario.controllers.js');
 
 // Rutas para el controlador de books
 router.post('/api/books/create', Books.create);
